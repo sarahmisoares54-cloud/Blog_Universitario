@@ -1,0 +1,211 @@
+/* Importando uma fonte limpa semelhante ao design */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.page-container {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Inter', sans-serif;
+}
+
+/* --- HEADER --- */
+.header {
+  background-color: #EFA624; /* Amarelo mostarda */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.star-icon {
+  color: #fff;
+  background-color: #000;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #000;
+  letter-spacing: 0.5px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 12px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #fff;
+  background-color: #9A7020; /* Fundo dos botões de navegação */
+  padding: 10px 24px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: opacity 0.2s;
+}
+
+.nav-link:hover {
+  opacity: 0.8;
+}
+
+.user-avatar {
+  background-color: #000;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* --- MAIN CONTENT --- */
+.main-content {
+  flex: 1;
+  position: relative;
+  /* Imagem de fundo principal (substituta para a paisagem da rua) */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1541339907198-e08756dedf3f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  padding: 60px 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.content-overlay {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+  width: 100%;
+  z-index: 1;
+}
+
+/* --- COLUNA ESQUERDA (Card) --- */
+.left-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-title {
+  color: #fff;
+  font-size: 2.8rem;
+  font-weight: 900;
+  margin-bottom: -20px; /* Faz o título sobrepor o card branco */
+  z-index: 2;
+  position: relative;
+  padding-left: 30px;
+}
+
+.info-card {
+  background-color: #fff;
+  border-radius: 40px;
+  padding: 50px 40px 40px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  color: #9A7020; /* Cor do texto (marrom/dourado) */
+  font-size: 0.95rem;
+  line-height: 1.5;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.info-card strong {
+  font-weight: 800;
+}
+
+.highlight-text {
+  font-size: 1.05rem;
+}
+
+.action-button {
+  background-color: #EFA624;
+  height: 40px;
+  border-radius: 20px;
+  margin-top: 15px;
+  width: 100%;
+}
+
+/* --- COLUNA DIREITA (Imagem e Overlay) --- */
+.right-column {
+  flex: 1.3;
+  display: flex;
+  align-items: stretch;
+}
+
+.image-frame {
+  border: 4px solid #fff;
+  border-radius: 40px;
+  width: 100%;
+  min-height: 400px;
+  position: relative;
+  overflow: hidden;
+  /* Imagem secundária (substituta para o prédio da faculdade) */
+  background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+.image-overlay-text {
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  line-height: 0.9;
+}
+
+.text-sobre {
+  color: #fff;
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+.text-nos {
+  color: #EFA624;
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+}
+
+/* --- RESPONSIVIDADE BÁSICA --- */
+@media (max-width: 968px) {
+  .content-overlay {
+    flex-direction: column;
+  }
+  .nav-menu {
+    display: none; /* Oculta menu em telas pequenas - ideal substituir por menu hambúrguer */
+  }
+  .section-title {
+    font-size: 2.2rem;
+  }
+  .image-frame {
+    min-height: 300px;
+    margin-top: 30px;
+  }
+}
+
