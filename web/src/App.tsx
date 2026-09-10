@@ -1,21 +1,23 @@
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 import Home from './Home';
 import Sobre from './Sobre';
 
-function App() {
+const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <nav>
-        <Link to="/">Home</Link> |{' '}
-        <Link to="/sobre">Sobre</Link>
-      </nav>
 
       <Routes>
+
         <Route path="/" element={<Home />} />
+
         <Route path="/sobre" element={<Sobre />} />
+
       </Routes>
+
     </BrowserRouter>
   );
-}
+};
 
 export default App;
