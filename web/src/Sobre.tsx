@@ -6,7 +6,6 @@ const Sobre: React.FC = () => {
   return (
     <div className="page-container">
 
-      {/* Header */}
       <header className="header">
 
         <div className="logo-container">
@@ -38,11 +37,11 @@ const Sobre: React.FC = () => {
             SOBRE NÓS
           </Link>
 
-          <button className="nav-link">
+          <button type="button" className="nav-link">
             SOS ALUNO
           </button>
 
-          <button className="nav-link">
+          <button type="button" className="nav-link">
             FÓRUM
           </button>
 
@@ -54,12 +53,10 @@ const Sobre: React.FC = () => {
 
       </header>
 
-      {/* Main Content */}
       <main className="main-content">
 
         <div className="content-overlay">
 
-          {/* Coluna Esquerda - Texto */}
           <div className="left-column">
 
             <h2 className="section-title">
@@ -105,7 +102,6 @@ const Sobre: React.FC = () => {
 
           </div>
 
-          {/* Coluna Direita - Imagem */}
           <div className="right-column">
 
             <div className="image-frame">

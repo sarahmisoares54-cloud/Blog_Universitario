@@ -11,8 +11,10 @@
 }
 
 html,
-body {
+body,
+#root {
   width: 100%;
+  min-width: 100%;
   min-height: 100%;
 }
 
@@ -29,8 +31,10 @@ body {
 :root {
   --yellow: #efa624;
   --yellow-light: #f5b52f;
+
   --brown: #9a7020;
   --brown-dark: #765313;
+
   --black: #000000;
   --white: #ffffff;
 }
@@ -53,35 +57,34 @@ body {
 
 .header {
   width: 100%;
-  height: 50px;
+  min-height: 58px;
 
-  padding: 5px 18px;
+  padding: 6px clamp(15px, 3vw, 50px);
 
   display: flex;
   align-items: center;
-  justify-content: space-between;
 
   background: var(--yellow);
 
   position: relative;
   z-index: 10;
-
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* LOGO */
+/* =========================================================
+   LOGO
+   ========================================================= */
 
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 8px;
 
   flex-shrink: 0;
 }
 
 .star-icon {
-  width: 32px;
-  height: 32px;
+  width: clamp(32px, 2.8vw, 40px);
+  height: clamp(32px, 2.8vw, 40px);
 
   display: flex;
   align-items: center;
@@ -92,64 +95,95 @@ body {
 
   border-radius: 50%;
 
-  font-size: 18px;
-  font-weight: 900;
+  font-size: clamp(17px, 1.5vw, 21px);
 }
 
 .logo-text {
   color: var(--black);
 
-  font-size: 17px;
-  font-weight: 900;
+  font-size: clamp(13px, 1.3vw, 18px);
+  font-weight: 800;
 
   letter-spacing: -0.5px;
+
+  white-space: nowrap;
 }
 
-/* MENU */
+/* =========================================================
+   MENU
+   ========================================================= */
 
 .nav-menu {
+  margin-left: auto;
+  margin-right: clamp(10px, 1.5vw, 20px);
+
   display: flex;
   align-items: center;
-  gap: 8px;
 
-  margin-left: auto;
-  margin-right: 18px;
+  gap: clamp(5px, 0.7vw, 10px);
 }
 
 .nav-link {
-  height: 28px;
+  width: clamp(72px, 7vw, 100px);
+  height: clamp(27px, 2.5vw, 32px);
 
-  padding: 0 18px;
+  padding: 0;
+  margin: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  border: none;
+  outline: none;
+
+  border-radius: 7px;
+
   background: var(--brown);
   color: var(--white);
 
-  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
 
+  font-size: clamp(8px, 0.75vw, 11px);
+  font-weight: 600;
+
+  line-height: 1;
+
+  text-align: center;
   text-decoration: none;
-
-  font-size: 11px;
-  font-weight: 800;
-
   text-transform: uppercase;
 
-  transition: 0.2s ease;
+  box-shadow: none;
+
+  cursor: pointer;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  transition: none;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:focus,
+.nav-link:active {
+  border: none;
+  outline: none;
+
+  box-shadow: none;
+  text-decoration: none;
+
   background: var(--brown-dark);
-  transform: translateY(-1px);
+
+  transform: none;
 }
 
-/* AVATAR */
+/* =========================================================
+   AVATAR
+   ========================================================= */
 
 .user-avatar {
-  width: 28px;
-  height: 28px;
+  width: clamp(28px, 2.5vw, 36px);
+  height: clamp(28px, 2.5vw, 36px);
 
   display: flex;
   align-items: center;
@@ -160,27 +194,30 @@ body {
 
   border-radius: 50%;
 
-  font-size: 9px;
-  font-weight: 800;
+  font-size: clamp(8px, 0.7vw, 10px);
+  font-weight: 700;
 
   flex-shrink: 0;
 }
 
 /* =========================================================
-   CONTEÚDO PRINCIPAL
+   MAIN
    ========================================================= */
 
 .main-content {
-  position: relative;
+  width: 100%;
+
+  min-height: calc(100vh - 58px);
 
   flex: 1;
-  min-height: calc(100vh - 50px);
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
-  padding: 28px 22px;
+  padding:
+    clamp(25px, 5vh, 70px)
+    clamp(20px, 4vw, 70px);
 
   background:
     linear-gradient(
@@ -191,20 +228,43 @@ body {
 
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* =========================================================
-   ESTRUTURA
+   CONTEÚDO PRINCIPAL
    ========================================================= */
 
 .content-overlay {
-  width: 100%;
-  max-width: 1180px;
 
-  display: flex;
+  /*
+   * Igual à lógica do segundo CSS:
+   * o conteúdo cresce junto com a janela.
+   */
+  width: 92vw;
+
+  /*
+   * Limite para telas muito grandes.
+   */
+  max-width: 1750px;
+
+  min-width: 0;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  /*
+   * 41% texto
+   * 59% imagem
+   */
+  grid-template-columns: 41% 59%;
+
   align-items: center;
 
-  gap: 48px;
+  gap: clamp(25px, 3vw, 50px);
+
+  overflow: visible;
 }
 
 /* =========================================================
@@ -212,27 +272,30 @@ body {
    ========================================================= */
 
 .left-column {
-  flex: 0 0 43%;
+  width: 100%;
+  min-width: 0;
 
   display: flex;
   flex-direction: column;
 
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
-/* TÍTULO */
+/* =========================================================
+   TÍTULO BASICAMENTE
+   ========================================================= */
 
 .section-title {
-  position: relative;
-  z-index: 3;
-
-  margin-left: 18px;
+  margin-left: clamp(8px, 2vw, 25px);
   margin-bottom: -8px;
+
+  width: max-content;
 
   color: var(--white);
 
-  font-size: 24px;
+  font-size: clamp(19px, 2.4vw, 34px);
+
   line-height: 1.05;
 
   font-weight: 900;
@@ -241,29 +304,53 @@ body {
 
   text-shadow:
     2px 2px 5px rgba(0, 0, 0, 0.45);
+
+  position: relative;
+  z-index: 4;
 }
 
-/* CARD */
+/* =========================================================
+   CARD
+   ========================================================= */
 
 .info-card {
-  position: relative;
-  z-index: 2;
+  width: 100%;
+  min-width: 0;
 
-  padding: 28px 28px 20px;
+  padding:
+    clamp(18px, 2.5vw, 38px);
 
   background: var(--white);
 
-  border-radius: 26px;
+  border-radius:
+    clamp(18px, 2vw, 28px);
 
   color: var(--brown);
 
-  font-size: 10px;
-  line-height: 1.45;
+  font-size:
+    clamp(9px, 0.85vw, 14px);
 
-  font-weight: 600;
+  line-height: 1.5;
+
+  font-weight: 500;
+
+  text-align: center;
 
   box-shadow:
     0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+/* =========================================================
+   TEXTOS DO CARD
+   ========================================================= */
+
+.info-card p {
+  margin-bottom:
+    clamp(7px, 1vw, 12px);
+}
+
+.info-card p:last-of-type {
+  margin-bottom: 0;
 }
 
 .info-card strong {
@@ -272,17 +359,24 @@ body {
 }
 
 .highlight-text {
-  font-size: 10px;
+  font-size:
+    clamp(9px, 0.85vw, 14px);
+
   font-weight: 700;
 }
 
-/* BOTÃO */
+/* =========================================================
+   BARRA AMARELA
+   ========================================================= */
 
 .action-button {
   width: 100%;
-  height: 21px;
 
-  margin-top: 12px;
+  height:
+    clamp(12px, 1.5vw, 22px);
+
+  margin-top:
+    clamp(10px, 1.2vw, 16px);
 
   background: var(--yellow);
 
@@ -294,7 +388,7 @@ body {
    ========================================================= */
 
 .right-column {
-  flex: 1;
+  width: 100%;
   min-width: 0;
 
   display: flex;
@@ -304,18 +398,29 @@ body {
   z-index: 2;
 }
 
-/* MOLDURA DA IMAGEM */
+/* =========================================================
+   IMAGEM
+   ========================================================= */
 
 .image-frame {
+  display: block;
+
   width: 100%;
-  height: 360px;
+
+  /*
+   * A altura acompanha o tamanho da tela.
+   */
+  height:
+    clamp(280px, 34vw, 570px);
 
   position: relative;
 
   overflow: hidden;
 
   border: 3px solid var(--white);
-  border-radius: 32px;
+
+  border-radius:
+    clamp(20px, 2.5vw, 34px);
 
   background:
     url('https://images.unsplash.com/photo-1564981797816-1043664bf78d?auto=format&fit=crop&w=1200&q=85');
@@ -334,8 +439,11 @@ body {
 .image-overlay-text {
   position: absolute;
 
-  right: 25px;
-  bottom: 22px;
+  right:
+    clamp(15px, 2vw, 30px);
+
+  bottom:
+    clamp(15px, 2vw, 25px);
 
   display: flex;
   flex-direction: column;
@@ -348,11 +456,13 @@ body {
 
 .text-sobre,
 .text-nos {
-  font-size: 30px;
+  font-size:
+    clamp(23px, 2.4vw, 38px);
+
   font-weight: 900;
 
   text-shadow:
-    2px 2px 6px rgba(0, 0, 0, 0.5);
+    2px 2px 6px rgba(0, 0, 0, 0.55);
 }
 
 .text-sobre {
@@ -364,74 +474,198 @@ body {
 }
 
 /* =========================================================
-   RESPONSIVIDADE
+   MONITORES GRANDES
    ========================================================= */
 
-@media (max-width: 900px) {
-
-  .header {
-    padding: 5px 14px;
-  }
-
-  .nav-menu {
-    gap: 5px;
-    margin-right: 10px;
-  }
-
-  .nav-link {
-    padding: 0 11px;
-    font-size: 9px;
-  }
+@media (min-width: 1400px) {
 
   .content-overlay {
-    gap: 25px;
-  }
-
-  .section-title {
-    font-size: 21px;
-  }
-
-  .info-card {
-    font-size: 9px;
+    width: 90vw;
+    max-width: 1750px;
   }
 
   .image-frame {
-    height: 320px;
+    height: min(48vh, 600px);
   }
 
-  .text-sobre,
-  .text-nos {
-    font-size: 27px;
+  .info-card {
+    font-size: 13px;
+  }
+
+  .highlight-text {
+    font-size: 13px;
   }
 }
 
-@media (max-width: 700px) {
+/* =========================================================
+   FULL HD / MONITORES MUITO GRANDES
+   ========================================================= */
+
+@media (min-width: 1800px) {
+
+  .content-overlay {
+    width: 88vw;
+    max-width: 1800px;
+  }
+
+  .image-frame {
+    height: min(50vh, 650px);
+  }
+
+  .info-card {
+    font-size: 14px;
+  }
+
+  .highlight-text {
+    font-size: 14px;
+  }
+}
+
+/* =========================================================
+   NOTEBOOKS
+   ========================================================= */
+
+@media (max-width: 1100px) and (min-width: 801px) {
+
+  .content-overlay {
+    width: 94vw;
+
+    grid-template-columns: 41% 59%;
+
+    gap: 25px;
+  }
+
+  .image-frame {
+    height:
+      clamp(270px, 34vw, 400px);
+  }
+
+  .section-title {
+    font-size:
+      clamp(19px, 2.3vw, 28px);
+  }
+
+  .info-card {
+    font-size:
+      clamp(9px, 0.95vw, 12px);
+  }
+
+  .highlight-text {
+    font-size:
+      clamp(9px, 0.95vw, 12px);
+  }
+}
+
+/* =========================================================
+   TABLETS
+   ========================================================= */
+
+@media (max-width: 800px) {
 
   .nav-menu {
     display: none;
   }
 
-  .content-overlay {
-    flex-direction: column;
-    gap: 25px;
-  }
-
-  .left-column,
-  .right-column {
-    width: 100%;
-    flex-basis: auto;
-  }
-
   .main-content {
-    padding: 35px 20px;
+    min-height: calc(100vh - 50px);
+
+    padding:
+      30px 20px 40px;
+  }
+
+  .content-overlay {
+    width: 100%;
+    max-width: 700px;
+
+    grid-template-columns: 1fr;
+
+    gap: 30px;
   }
 
   .image-frame {
-    height: 300px;
+    height:
+      clamp(240px, 55vw, 400px);
+  }
+}
+
+/* =========================================================
+   CELULARES
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  .header {
+    min-height: 50px;
+
+    padding:
+      6px 12px;
+  }
+
+  .main-content {
+    padding:
+      25px 15px 35px;
+  }
+
+  .content-overlay {
+    width: 100%;
+
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+  }
+
+  .section-title {
+    font-size:
+      clamp(18px, 6vw, 25px);
+  }
+
+  .info-card {
+    padding:
+      20px 18px;
+  }
+
+  .info-card {
+    font-size: 11px;
+  }
+
+  .highlight-text {
+    font-size: 11px;
+  }
+
+  .image-frame {
+    width: 100%;
+
+    height:
+      clamp(220px, 60vw, 340px);
   }
 
   .text-sobre,
   .text-nos {
-    font-size: 30px;
+    font-size:
+      clamp(24px, 7vw, 32px);
+  }
+}
+
+/* =========================================================
+   CELULARES PEQUENOS
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+  .info-card {
+    padding:
+      18px 15px;
+  }
+
+  .info-card {
+    font-size: 10px;
+  }
+
+  .highlight-text {
+    font-size: 10px;
+  }
+
+  .image-frame {
+    height: 220px;
   }
 }
