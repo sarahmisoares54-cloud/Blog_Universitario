@@ -1,619 +1,414 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-/* =========================================================
-   RESET
-   ========================================================= */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html,
-body,
-#root {
-  width: 100%;
-  min-width: 100%;
-  min-height: 100%;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
-  background: #000;
-}
-
-/* =========================================================
-   VARIÁVEIS
-   ========================================================= */
+/* =========================================
+   IDENTIDADE VISUAL
+========================================= */
 
 :root {
   --yellow: #efa624;
+  --yellow-light: #f5b52f;
   --brown: #9a7020;
   --brown-dark: #765313;
   --black: #000;
   --white: #fff;
 }
 
-/* =========================================================
-   APP
-   ========================================================= */
+/* =========================================
+   HOME
+========================================= */
 
 .app-container {
   width: 100%;
   min-height: 100vh;
-
   display: flex;
   flex-direction: column;
+  background: var(--black);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
 }
 
-/* =========================================================
-   HEADER
-   ========================================================= */
+/* =========================================
+   CABEÇALHO DA HOME
+========================================= */
 
-.header {
+.app-container .header {
   width: 100%;
   min-height: 58px;
-
   padding: 6px clamp(15px, 3vw, 50px);
-
   display: flex;
   align-items: center;
-
+  gap: 15px;
   background: var(--yellow);
-
   position: relative;
   z-index: 10;
+  flex-shrink: 0;
 }
 
-/* =========================================================
-   LOGO
-   ========================================================= */
-
-.logo-container {
+.app-container .logo-container {
   display: flex;
   align-items: center;
   gap: 8px;
-
   flex-shrink: 0;
 }
 
-.star-icon {
-  width: clamp(32px, 2.8vw, 40px);
-  height: clamp(32px, 2.8vw, 40px);
-
+.app-container .star-icon {
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-
   background: var(--black);
   color: var(--white);
-
   border-radius: 50%;
-
-  font-size: clamp(17px, 1.5vw, 21px);
+  font-size: 22px;
+  line-height: 1;
 }
 
-
-.logo-container h1 {
+.app-container .logo-container h1 {
+  margin: 0;
   color: var(--black);
-
   font-size: clamp(13px, 1.3vw, 18px);
-  font-weight: 800;
-
+  font-weight: 900;
   letter-spacing: -0.5px;
-
   white-space: nowrap;
 }
 
-/* =========================================================
-   MENU
-   ========================================================= */
-
-.nav-menu {
+.app-container .nav-menu {
   margin-left: auto;
-  margin-right: clamp(10px, 1.5vw, 20px);
-
+  margin-right: clamp(8px, 1.5vw, 20px);
   display: flex;
   align-items: center;
-
   gap: clamp(5px, 0.7vw, 10px);
 }
 
-/*
-   TODOS os botões e links do menu
-   recebem exatamente o mesmo estilo.
-*/
-
-.nav-btn {
+.app-container .nav-btn {
   width: clamp(72px, 7vw, 100px);
-  height: clamp(27px, 2.5vw, 32px);
-
-  padding: 0;
+  min-width: 0;
+  height: 32px;
+  padding: 0 5px;
   margin: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   border: none;
-  outline: none;
-
   border-radius: 7px;
-
   background: var(--brown);
   color: var(--white);
-
   font-family: 'Inter', sans-serif;
   font-size: clamp(8px, 0.75vw, 11px);
-  font-weight: 600;
-
+  font-weight: 700;
   line-height: 1;
-
   text-align: center;
   text-decoration: none;
-  text-transform: uppercase;
-
-  box-shadow: none;
-
+  white-space: nowrap;
   cursor: pointer;
-
   appearance: none;
   -webkit-appearance: none;
+  transition: background 0.2s ease;
 }
 
-.nav-btn:hover,
-.nav-btn:focus,
-.nav-btn:active {
-  border: none;
-  outline: none;
-
-  box-shadow: none;
-
-  text-decoration: none;
-
+.app-container .nav-btn:hover,
+.app-container .nav-btn:focus-visible {
   background: var(--brown-dark);
-
-  transform: none;
+  outline: 2px solid var(--white);
+  outline-offset: 2px;
 }
 
-/* =========================================================
-   PERFIL
-   ========================================================= */
+.app-container .nav-btn.active {
+  background: var(--brown-dark);
+}
 
-.user-profile {
-  width: clamp(28px, 2.5vw, 36px);
-  height: clamp(28px, 2.5vw, 36px);
-
+.app-container .user-profile {
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  flex-shrink: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-
+  border: 0;
+  border-radius: 50%;
   background: var(--black);
   color: var(--white);
-
-  border-radius: 50%;
-
-  font-size: clamp(8px, 0.7vw, 10px);
-  font-weight: 700;
-
-  flex-shrink: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 800;
+  cursor: pointer;
 }
 
-/* =========================================================
-   MAIN
-   ========================================================= */
+/* =========================================
+   CONTEÚDO PRINCIPAL
+========================================= */
 
-.main-content {
+.app-container .main-content {
   width: 100%;
   min-height: calc(100vh - 58px);
-
   flex: 1;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
-  padding:
-    clamp(25px, 5vh, 70px)
-    clamp(20px, 4vw, 70px);
-
+  padding: clamp(25px, 5vh, 65px) clamp(20px, 4vw, 65px);
   background:
     linear-gradient(
-      rgba(0, 0, 0, 0.38),
-      rgba(0, 0, 0, 0.38)
+      rgba(0, 0, 0, 0.42),
+      rgba(0, 0, 0, 0.42)
     ),
-    url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=85');
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+    url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=1920&q=85')
+    center / cover no-repeat;
 }
 
-/* =========================================================
-   CONTEÚDO
-   ========================================================= */
-
-.content-wrapper {
-  /*
-   * AQUI está a principal correção.
-   *
-   * 92vw = 92% da largura da janela.
-   *
-   * Assim, em:
-   *
-   * 1024px -> ~942px
-   * 1366px -> ~1257px
-   * 1920px -> ~1766px
-   *
-   * O conteúdo cresce junto com o monitor.
-   */
-
-  width: 92vw;
-
-  /*
-   * Limite para monitores gigantes.
-   */
-  max-width: 1750px;
-
-  /*
-   * Nunca deixa o conteúdo ultrapassar a tela.
-   */
+.app-container .content-wrapper {
+  width: 100%;
+  max-width: 1500px;
   min-width: 0;
-
   margin: 0 auto;
-
   display: grid;
-
-  /*
-   * 42% texto
-   * 58% imagem
-   */
-  grid-template-columns: 42% 58%;
-
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
   align-items: center;
-
-  gap: 50px;
-
-  /*
-   * Faz o tamanho das colunas respeitar
-   * o gap e o container.
-   */
-  overflow: visible;
+  gap: clamp(25px, 3vw, 48px);
 }
 
-/* =========================================================
-   TEXTO
-   ========================================================= */
+/* =========================================
+   COLUNA DE TEXTO
+========================================= */
 
-.text-section {
+.app-container .text-section {
   width: 100%;
   min-width: 0;
-
   display: flex;
   flex-direction: column;
-
   position: relative;
   z-index: 2;
 }
 
-/* =========================================================
-   TÍTULO
-   ========================================================= */
-
-.pre-title {
-  margin-left: clamp(8px, 1.5vw, 20px);
-  margin-bottom: -8px;
-
-  color: var(--white);
-
-  font-size: clamp(19px, 2.4vw, 34px);
-
-  line-height: 1.05;
-
-  font-weight: 800;
-
-  text-transform: uppercase;
-
-  text-shadow:
-    2px 2px 5px rgba(0, 0, 0, 0.4);
-
+.app-container .pre-title {
+  margin: 0 0 -7px 12px;
   position: relative;
-  z-index: 3;
-}
-
-/* =========================================================
-   CARD
-   ========================================================= */
-
-.content-card {
-  width: 100%;
-  min-width: 0;
-
-  padding:
-    clamp(18px, 2.5vw, 38px);
-
-  background: var(--white);
-
-  border-radius:
-    clamp(18px, 2vw, 28px);
-
-  box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.28);
-}
-
-/* =========================================================
-   TÍTULO DO CARD
-   ========================================================= */
-
-.card-title {
-  margin-bottom:
-    clamp(10px, 1.2vw, 18px);
-
-  color: var(--yellow);
-
-  font-size:
-    clamp(20px, 2.2vw, 34px);
-
+  z-index: 2;
+  color: var(--white);
+  font-size: clamp(21px, 2.4vw, 34px);
   line-height: 1.05;
-
-  font-weight: 800;
-
+  font-weight: 900;
   text-transform: uppercase;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.45);
 }
 
-/* =========================================================
-   TEXTO
-   ========================================================= */
-
-.card-text {
-  width: 100%;
-
-  color: var(--brown);
-
-  font-size:
-    clamp(10px, 0.85vw, 14px);
-
-  line-height: 1.5;
-
-  font-weight: 500;
-}
-
-.card-text p {
-  margin-bottom:
-    clamp(7px, 1vw, 12px);
-}
-
-/* =========================================================
-   BARRA AMARELA
-   ========================================================= */
-
-.card-button-placeholder {
-  width: 100%;
-
-  height:
-    clamp(18px, 1.8vw, 24px);
-
-  margin-top:
-    clamp(10px, 1.2vw, 16px);
-
-  background: var(--yellow);
-
-  border-radius: 15px;
-
-  box-shadow: none;
-}
-
-/* =========================================================
-   IMAGEM
-   ========================================================= */
-
-.image-section {
+.app-container .content-card {
   width: 100%;
   min-width: 0;
+  padding: clamp(20px, 2.5vw, 36px);
+  border-radius: clamp(18px, 2vw, 28px);
+  background: var(--white);
+  color: var(--brown);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
 
+.app-container .card-title {
+  margin: 0 0 15px;
+  color: var(--yellow);
+  font-size: clamp(21px, 2.2vw, 33px);
+  line-height: 1.08;
+  font-weight: 900;
+  overflow-wrap: anywhere;
+}
+
+.app-container .card-text {
+  width: 100%;
+  color: var(--brown);
+  font-size: clamp(11px, 0.9vw, 14px);
+  line-height: 1.6;
+  font-weight: 500;
+  overflow-wrap: break-word;
+}
+
+.app-container .card-text p {
+  margin: 0 0 12px;
+}
+
+.app-container .card-text p:last-child {
+  margin-bottom: 0;
+}
+
+.app-container .card-button-placeholder {
+  width: 100%;
+  height: 18px;
+  margin-top: 18px;
+  border-radius: 15px;
+  background: var(--yellow);
+}
+
+/* =========================================
+   IMAGEM
+========================================= */
+
+.app-container .image-section {
+  width: 100%;
+  min-width: 0;
   display: flex;
   align-items: center;
-
-  position: relative;
-  z-index: 2;
 }
 
-.hero-image {
+.app-container .hero-image {
   display: block;
-
   width: 100%;
-
-  /*
-   * A altura também acompanha a tela.
-   */
-  height:
-    clamp(280px, 34vw, 570px);
-
+  height: clamp(300px, 36vw, 540px);
+  min-width: 0;
   object-fit: cover;
-
+  object-position: center;
   border: 3px solid var(--white);
-
-  border-radius:
-    clamp(20px, 2.5vw, 34px);
-
-  box-shadow:
-    0 15px 35px rgba(0, 0, 0, 0.35);
+  border-radius: clamp(20px, 2.5vw, 34px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
 }
 
-/* =========================================================
-   MONITORES GRANDES
-   ========================================================= */
+/* =========================================
+   TELAS GRANDES
+========================================= */
 
-@media (min-width: 1400px) {
-
-  .content-wrapper {
-    width: 90vw;
-    max-width: 1750px;
+@media (min-width: 1600px) {
+  .app-container .content-wrapper {
+    max-width: 1650px;
   }
 
-  .hero-image {
-    height: min(48vh, 600px);
-  }
-
-  .card-text {
-    font-size: 13px;
+  .app-container .hero-image {
+    height: min(48vh, 620px);
   }
 }
 
-/* =========================================================
-   FULL HD / MONITORES GRANDES
-   ========================================================= */
+/* =========================================
+   NOTEBOOKS E TABLETS
+========================================= */
 
-@media (min-width: 1800px) {
-
-  .content-wrapper {
-    width: 88vw;
-    max-width: 1800px;
+@media (max-width: 1000px) {
+  .app-container .content-wrapper {
+    gap: 24px;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   }
 
-  .hero-image {
-    height: min(50vh, 650px);
+  .app-container .content-card {
+    padding: 22px;
   }
 
-  .card-text {
-    font-size: 14px;
-  }
-}
-
-/* =========================================================
-   NOTEBOOKS
-   ========================================================= */
-
-@media (max-width: 1100px) and (min-width: 801px) {
-
-  .content-wrapper {
-    width: 94vw;
-
-    /*
-     * No notebook, damos um pouco mais
-     * de espaço para a imagem.
-     */
-    grid-template-columns: 42% 58%;
+  .app-container .card-text {
+    font-size: 11px;
   }
 
-  .hero-image {
-    height:
-      clamp(270px, 34vw, 400px);
-  }
-
-  .card-title {
-    font-size: clamp(20px, 2.3vw, 28px);
-  }
-
-  .card-text {
-    font-size: clamp(10px, 0.95vw, 12px);
+  .app-container .hero-image {
+    height: clamp(280px, 38vw, 410px);
   }
 }
-
-/* =========================================================
-   TABLETS
-   ========================================================= */
 
 @media (max-width: 800px) {
-
-  .nav-menu {
-    display: none;
+  .app-container .header {
+    min-height: 54px;
+    padding: 7px 14px;
+    gap: 8px;
   }
 
-  .main-content {
-    min-height: calc(100vh - 50px);
-
-    padding:
-      30px 20px 40px;
+  .app-container .nav-menu {
+    margin-right: 8px;
+    gap: 5px;
   }
 
-  .content-wrapper {
-    width: 100%;
-    max-width: 700px;
-
-    grid-template-columns: 1fr;
-
-    gap: 30px;
+  .app-container .nav-btn {
+    width: auto;
+    min-width: 62px;
+    padding: 0 8px;
+    font-size: 9px;
   }
 
-  .hero-image {
-    height:
-      clamp(240px, 55vw, 400px);
-  }
-}
-
-/* =========================================================
-   CELULARES
-   ========================================================= */
-
-@media (max-width: 600px) {
-
-  .header {
-    min-height: 50px;
-
-    padding:
-      6px 12px;
+  .app-container .main-content {
+    min-height: calc(100vh - 54px);
+    padding: 30px 20px 40px;
   }
 
-  .main-content {
-    padding:
-      25px 15px 35px;
-  }
-
-  .content-wrapper {
-    width: 100%;
-
-    grid-template-columns: 1fr;
-
+  .app-container .content-wrapper {
+    max-width: 650px;
+    grid-template-columns: minmax(0, 1fr);
     gap: 28px;
   }
 
-  .pre-title {
-    font-size:
-      clamp(18px, 6vw, 25px);
-  }
-
-  .content-card {
-    padding:
-      20px 18px;
-  }
-
-  .card-title {
-    font-size:
-      clamp(20px, 7vw, 28px);
-  }
-
-  .card-text {
-    font-size: 11px;
-    line-height: 1.55;
-  }
-
-  .hero-image {
-    width: 100%;
-
-    height:
-      clamp(220px, 60vw, 340px);
+  .app-container .hero-image {
+    height: clamp(240px, 55vw, 380px);
   }
 }
 
-/* =========================================================
-   CELULARES PEQUENOS
-   ========================================================= */
+/* =========================================
+   CELULARES
+========================================= */
+
+@media (max-width: 600px) {
+  .app-container .header {
+    flex-wrap: wrap;
+    padding: 8px 12px;
+  }
+
+  .app-container .logo-container h1 {
+    font-size: 14px;
+  }
+
+  .app-container .nav-menu {
+    order: 3;
+    width: 100%;
+    margin: 5px 0 0;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+  }
+
+  .app-container .nav-btn {
+    width: 100%;
+    min-width: 0;
+    height: 32px;
+    font-size: 9px;
+  }
+
+  .app-container .user-profile {
+    margin-left: auto;
+  }
+
+  .app-container .main-content {
+    padding: 28px 15px 35px;
+  }
+
+  .app-container .content-wrapper {
+    gap: 25px;
+  }
+
+  .app-container .pre-title {
+    font-size: clamp(20px, 6vw, 27px);
+  }
+
+  .app-container .content-card {
+    padding: 21px 18px;
+  }
+
+  .app-container .card-title {
+    font-size: clamp(22px, 7vw, 30px);
+  }
+
+  .app-container .card-text {
+    font-size: 11px;
+    line-height: 1.65;
+  }
+
+  .app-container .hero-image {
+    height: clamp(220px, 60vw, 340px);
+  }
+}
 
 @media (max-width: 380px) {
-
-  .content-card {
-    padding:
-      18px 15px;
+  .app-container .star-icon,
+  .app-container .user-profile {
+    width: 32px;
+    height: 32px;
   }
 
-  .card-text {
+  .app-container .content-card {
+    padding: 18px 15px;
+  }
+
+  .app-container .card-text {
     font-size: 10px;
-  }
-
-  .hero-image {
-    height: 220px;
   }
 }

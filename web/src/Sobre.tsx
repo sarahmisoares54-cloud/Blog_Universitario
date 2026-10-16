@@ -1,70 +1,19 @@
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Header from './Header';
 import './Sobre.css';
 
 const Sobre: React.FC = () => {
   return (
     <div className="page-container">
-
-      <header className="header">
-
-        <div className="logo-container">
-
-          <div className="star-icon">
-            <svg
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              width="24"
-              height="24"
-            >
-              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
-            </svg>
-          </div>
-
-          <h1 className="logo-text">
-            UNIV.BLOG
-          </h1>
-
-        </div>
-
-        <nav className="nav-menu">
-
-          <Link to="/" className="nav-link">
-            HOME
-          </Link>
-
-          <Link to="/sobre" className="nav-link active">
-            SOBRE NÓS
-          </Link>
-
-          <button type="button" className="nav-link">
-            SOS ALUNO
-          </button>
-
-          <button type="button" className="nav-link">
-            FÓRUM
-          </button>
-
-        </nav>
-
-        <div className="user-avatar">
-          AU
-        </div>
-
-      </header>
+      <Header />
 
       <main className="main-content">
-
         <div className="content-overlay">
-
           <div className="left-column">
-
-            <h2 className="section-title">
-              BASICAMENTE
-            </h2>
+            <h2 className="section-title">BASICAMENTE</h2>
 
             <div className="info-card">
-
               <p className="highlight-text">
                 <strong>
                   Somos um blog feito por universitários, para universitários.
@@ -96,36 +45,20 @@ const Sobre: React.FC = () => {
                 </strong>
               </p>
 
-              <div className="action-button"></div>
-
+              <div className="action-button" />
             </div>
-
           </div>
 
           <div className="right-column">
-
             <div className="image-frame">
-
               <div className="image-overlay-text">
-
-                <span className="text-sobre">
-                  SOBRE
-                </span>
-
-                <span className="text-nos">
-                  NÓS
-                </span>
-
+                <span className="text-sobre">SOBRE</span>
+                <span className="text-nos">NÓS</span>
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </main>
-
     </div>
   );
 };

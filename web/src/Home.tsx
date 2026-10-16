@@ -15,7 +15,6 @@ const Home: React.FC = () => {
         </div>
 
         <nav className="nav-menu">
-
           <Link to="/" className="nav-btn active">
             HOME
           </Link>
@@ -24,19 +23,27 @@ const Home: React.FC = () => {
             SOBRE NÓS
           </Link>
 
-          <button className="nav-btn">
+          <Link to="/sos-aluno" className="nav-btn">
             SOS ALUNO
-          </button>
+          </Link>
 
-          <button className="nav-btn">
+          <button
+            type="button"
+            className="nav-btn"
+            onClick={() => window.location.assign('/forum')}
+          >
             FÓRUM
           </button>
-
         </nav>
 
-        <div className="user-profile">
-          <span>AU</span>
-        </div>
+        <Link
+            to="/login"
+            className="user-profile"
+            aria-label="Entrar na minha conta"
+            title="Minha conta"
+          >
+            <span>AU</span>
+        </Link>
 
       </header>
 
